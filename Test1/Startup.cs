@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Test1.Brokers;
+using Test1.Services;
 
 namespace Test1
 {
@@ -30,6 +31,8 @@ namespace Test1
             services.AddDbContext<StorageBroker>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             services.AddMvc();
+
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
